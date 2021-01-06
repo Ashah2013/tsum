@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Text Summariser{% endblock title %}
+{% block body %}
+ <div>
+         <center><h1 class="one">TEXT SUMMARISER</h1><br/></center>
+
+
+    {% if user.is_authenticated %}
+    <form method="post" action="/gensum">
+        {% csrf_token %}
+        <center><div style="margin:0px 10px 0px" ><textarea id="original"  name="original" placeholder="Enter text" cols="50" rows="14" class="form-control" required></textarea></div><br/>
+        <div style="width:500px"><input type="number" name="maxnum" placeholder="Enter the number of lines you want" class="form-control" required><br/></div>
+            <button type="submit" class="btn btn-primary">Generate summary</button></center>
+    </form>
+         {% else %}
+   <div class="bg-black text-white"><center><h5>Please Login First!</h5></center></div>
+         {% endif %}
+</div>
+{% endblock body %}

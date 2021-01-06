@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Text Summariser{% endblock title %}
+{% block body %}
+ <div>
+         <center><h1 class="one">TEXT SUMMARISER</h1><br/></center>
+
+
+    {% if user.is_authenticated %}
+    <form method="post" action="/savehumansum">
+        {% csrf_token %}
+        <center><div style="margin:0px 10px 0px" ><button type="button" class="btn btn-warning btn-block"><font style='font-size:36px;'><pre>G    O    L    D        S    U    M    M    A    R    Y</pre></font></button></div></center>
+        <center><div style="margin:0px 10px 0px" ><textarea  id="human" name="human" placeholder="Write your summary" cols="50" rows="14" class="form-control" required></textarea></div><br/>
+            <button type="submit" class="btn btn-primary">Show results</button></center>
+    </form>
+         {% else %}
+     <center><h1>Please Login First!</h1></center>
+         {% endif %}
+</div>
+{% endblock body %}
